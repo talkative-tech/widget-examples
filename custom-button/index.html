@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Talkative Chat Widget Custom Button Example</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="text-center grid grid-cols-1 align-center gap-5 p-10 max-w-5xl m-auto">
+    <h1 class="text-3xl">Talkative Chat Widget Example</h1>
+    <p>
+      This code example allows you to start an interaction using a custom call-to-action button which can be located
+      anywhere within your page.
+    </p>
+    <p>
+      To make this example work with your own chat widget, please update the variables in the main.js file with the
+      correct widget UUID and the correct actionable name.
+    </p>
+
+    <p>
+      The buttons below have a default text to indicate the queue is offline. The is intentional as the JS will check
+      the queue presences and then update the button text if the queue is online. If you don't want the button to appear
+      you could instead set the styling for the button to be hidden by default, and then make the element visible once
+      the queue check is complete.
+    </p>
+    <div class="flex flex-col gap-3 content-center">
+        <div id="chat-button" class="text-black cursor-pointer">Live Chat Offline</div>
+        <div class="text-black">Some random link</div>
+        <div class="text-black">Some random link</div>
+        <div class="text-black">Some random link</div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
