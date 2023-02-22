@@ -3,6 +3,7 @@
  * It will form part of the full URL statement which can be found at the bottom of this script
  */
 
+const region = 'eu'; // or 'us' or 'au'
 const configUuid = 'e39f9811-1111-493b-b258-e964a1e33cf4';
 
 /**
@@ -38,6 +39,6 @@ window.talkativeCustomConfig = {
  * This is a call to include the scripts. It must be included last otherwise it is likely the callbacks above will not be registered in time
  * and not get called correctly.
  */
-import(`https://eu.engage.app/api/ecs/v1/loader/${configUuid}.js?path=${encodeURIComponent(window.location.origin + window.location.pathname)}&selectedVersion=${(new URLSearchParams(window.location.search)).get('ecsSelectedVersion') || ''}`);
+import(`https://${region}.engage.app/api/ecs/v1/loader/${configUuid}.js?path=${encodeURIComponent(window.location.origin + window.location.pathname)}&selectedVersion=${(new URLSearchParams(window.location.search)).get('ecsSelectedVersion') || ''}`);
 
 
