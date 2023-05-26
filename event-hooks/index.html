@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Talkative Chat Widget Autostart</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body class="text-center grid grid-cols-1 align-center gap-5 p-10 max-w-5xl m-auto">
+<h1 class="text-3xl">Talkative Chat Widget Event Hooks</h1>
+<p>
+	The Talkative Chat widget fires various events during the lifecycle of the widget. These events can be used to
+	trigger actions in your own code, or to send data to Engage to be used in the interaction.
+</p>
+<p>
+	This repository contains a simple example of how to listen for these events and register a callback.
+</p>
+
+<div id="event-list">
+	<div class="grid grid-cols-2 space-between border divide-x divide-gray-200">
+		<div class="font-bold text-xl">Event Name</div>
+		<div class="font-bold text-xl">Event Date/Time</div>
+	</div>
+</div>
+
+
+<script type="module" src="/main.js"></script>
+</body>
+</html>
