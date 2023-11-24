@@ -62,7 +62,50 @@ window.talkativeCustomConfig = {
 					data: window.someData.accountNumber,
 				}
 			];
-			
+
+			/**
+			 * Whilst in this example, we are calling this as soon as the widget has loaded, this can be called at any time during
+			 * the interaction. This will append the data to the interaction, so if you wish to update the data, you can call this
+			 * method again with the updated data. Please note, this will not cause the agent console to refresh the data. This would
+			 * require a manual page refresh by the agent, but there would be no way of them knowing this had occurred, so we do not recommend
+			 * using it in this way.
+			 */
+			window.talkativeApi.interactionData.appendInteractionData(data);
+		},
+		resumeInteraction() {
+
+			/**
+			 * Interaction data must be sent as an array of objects. The objects have a name, label, type and the data.
+			 * This prefills the data we wish to include.
+			 *
+			 * If the name in this array matches a field in the widget config, the data will be pre-filled in the widget.
+			 * The label passed it used to label the field in the console. This is not used in the widget and may be overriden if
+			 * you have specified a label in the widget config.
+			 *
+			 * The type is used by the agent console to decide how to format the data. At the time of writing, string is the only valid
+			 * option with more to be added in the future.
+			 */
+			const data = [
+				{
+					name: 'username',
+					label: 'Username',
+					type: 'string',
+					data: window.someData.username,
+				},
+				{
+					name: 'email',
+					label: 'Email Address',
+					type: 'string',
+					data: window.someData.email,
+				},
+				{
+					name: 'accountNumber',
+					label: 'Account Number',
+					type: 'string',
+					data: window.someData.accountNumber,
+				}
+			];
+
 			/**
 			 * Whilst in this example, we are calling this as soon as the widget has loaded, this can be called at any time during
 			 * the interaction. This will append the data to the interaction, so if you wish to update the data, you can call this

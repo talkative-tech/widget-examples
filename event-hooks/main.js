@@ -30,6 +30,12 @@ window.talkativeCustomConfig = {
 		console.log('custom tracking args', arguments);
 	},
 	events: {
+		enterDataCollection() {
+			window.widgetIsCollectingData = true;
+		},
+		exitDataCollection() {
+			window.widgetIsCollectingData = false;
+		},
 		enterStandby() {
 			appendLog('standby entered')
 			console.log('standby entered', arguments);
