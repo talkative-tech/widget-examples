@@ -101,7 +101,22 @@ window.talkativeCustomConfig = {
 				appendLog('widget is hidden from usage')
 			}
 			// This event is triggered when the widget is deactivated or activated. ie, when the entire ui including the chat button is hidden or shown.
-		}
+		},
+		agentJoined() {
+			/**
+			 * An agent joined the interaction, the arguments will include if the user that joined is a chatbot user
+			 * and the time they joined
+			 */
+			console.log('agent joined', arguments);
+		},
+		agentLeft() {
+			/**
+			 * An agent has left the interaction, the arguments will include if the user that left is a chatbot user
+			 * and the time they left
+			 */
+			console.log('agent left', arguments);
+		},
+
 	}
 };
 
