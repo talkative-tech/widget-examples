@@ -12,7 +12,7 @@ for your use case.
 
 ## Feature Demo Video
 
-[Feature Demo Video](assets/instant-start-interaction.mp4)
+https://github.com/user-attachments/assets/4584803f-c042-4b18-a4aa-f9cf3aa535d2
 
 ## Prerequisites
 
