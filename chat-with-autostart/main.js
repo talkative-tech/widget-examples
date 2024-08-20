@@ -4,7 +4,15 @@
  */
 
 const region = 'eu'; // or 'us' or 'au'
-const configUuid = 'e39f9811-1111-493b-b258-e964a1e33cf4';
+const configUuid = '64ad1e2d-de06-4a71-9552-e530205674cf';
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+if (urlParams.has('name')) {
+	document.getElementById('customer-name').innerText = urlParams.get('name');
+}
+
 
 /**
  * We declare an object on the window called talkativeCustomConfig - the chat widget will look for this and fire the
@@ -19,6 +27,9 @@ window.talkativeCustomConfig = {
 		 * This fires when the widget is ready to start an interaction.
 		 */
 		enterStandby() {
+			if (window.triggered) {
+			document.getElementById('start-interaction').innerText = 'Interaction Ended';
+			}
 			/**
 			 * As this script will automatically start a chat, we need to track if its active or not, as
 			 * enterStandby is also triggered when the interaction ends and resets back to the initial standby stage
@@ -27,30 +38,35 @@ window.talkativeCustomConfig = {
 				/**
 				 * We get the URL params and parse them
 				 */
-				const queryString = window.location.search;
-				const urlParams = new URLSearchParams(queryString);
+
+
 				/**
 				 * Create an array where we will store the interaction data we want to send to engage
 				 */
 				const interactionData = [];
-				
+
 				/**
 				 * Interaction data must be sent as an array of objects. The objects have a name, label, type and the data.
 				 * This prefills the data we wish to include.
 				 */
 				const data = [
 					{
-						name: 'foo',
-						label: 'Foo Label',
+						name: 'interested',
+						label: 'Product Interest',
 						type: 'string',
 					},
 					{
-						name: 'bar',
-						label: 'Bar Label',
+						name: 'phone',
+						label: 'Phone Number',
+						type: 'string',
+					},
+					{
+						name: 'name',
+						label: 'Guest Name',
 						type: 'string',
 					}
 				];
-				
+
 				/**
 				 * Loop through the query parameters, and search for them in our list of data. We then merge
 				 * the objects with the data value and push them into the interactionData array.
@@ -58,26 +74,28 @@ window.talkativeCustomConfig = {
 				for (const entry of urlParams.entries()) {
 					const key = entry[0];
 					const value = entry[1];
-					
+
 					const base = data.find((x) => x.name === key);
-					
+
 					if (base) {
 						interactionData.push({ data: value, ...base });
 					}
 				}
-				
+
 				/**
 				 * When all of the data has been mapped and added to the array, we can push that data up to engage
 				 * using the API.
 				 */
 				window.talkativeApi.interactionData.appendInteractionData(interactionData);
-				
+
 				/**
 				 * Once complete, we trigger the action to start the chat and then mark the action as triggered to prevent it
 				 * from firing again when the interaction ends and the widget enters standby again.
 				 */
 				window.talkativeApi.actions.triggerAction('start-chat');
 				window.triggered = true;
+				document.getElementById('start-interaction').disabled = true;
+				document.getElementById('start-interaction').innerText = 'Interaction In Progress';
 			}
 		}
 	}

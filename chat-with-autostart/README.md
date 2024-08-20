@@ -10,6 +10,10 @@ campaign. This is all possible using our front end API.
 The included examples are examples and should not be copied into your production environment without first modifying it
 for your use case. 
 
+## Feature Demo Video
+
+[Feature Demo Video](assets/instant-start-interaction.mp4)
+
 ## Prerequisites
 
 You will need the config UUID for the chosen chat widget.
